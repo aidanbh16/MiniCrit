@@ -1,5 +1,7 @@
 export default function Home() {
   return (
-    <h1>Hello World</h1>
+    <div className="pt-15 max-md:pt-10">
+      <h1>Hello World</h1>
+    </div>
   );
 }
