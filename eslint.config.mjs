@@ -15,7 +15,8 @@ const eslintConfig = [
     rules: {
       "quotes": [
         "error",
-        "double"
+        "double",
+        "backtick"
       ],
       "semi": [
         "error",

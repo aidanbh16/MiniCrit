@@ -1,32 +1,32 @@
-'use client';
+"use client";
 
-import { Attributes, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 
 export default function DarkModeToggle() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('hs_theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem("hs_theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    const dark = savedTheme === 'dark' || (savedTheme === 'auto' && prefersDark);
-    const light = savedTheme === 'light' || (savedTheme === 'auto' && !prefersDark);
+    const dark = savedTheme === "dark" || (savedTheme === "auto" && prefersDark);
+    const light = savedTheme === "light" || (savedTheme === "auto" && !prefersDark);
 
     if (dark) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
       setIsDark(true);
     } else if (light) {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
       setIsDark(false);
     }
   }, []);
 
   const toggleTheme = () => {
     const html = document.documentElement;
-    const newTheme = isDark ? 'light' : 'dark';
+    const newTheme = isDark ? "light" : "dark";
 
-    localStorage.setItem('hs_theme', newTheme);
-    html.classList.toggle('dark', newTheme === 'dark');
+    localStorage.setItem("hs_theme", newTheme);
+    html.classList.toggle("dark", newTheme === "dark");
     setIsDark(!isDark);
   };
 
