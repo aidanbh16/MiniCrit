@@ -21,15 +21,14 @@ export default function Nav() {
 
   return (
     <>
-      <header className="flex items-center h-15 w-full min-w-98 fixed z-51 bg-[rgba(234,235,237,1)] dark:bg-[rgba(46,23,96,1)] max-md:h-10">
-        <div className="w-1/3 h-full flex justify-center max-md:w-1/2 max-md:min-w-1/2 max-md:justify-start">
-          <div className="h-23 flex items-center bg-neutral-800 dark:bg-[rgba(17,17,50,1)] max-md:hidden">
+      <header className="flex items-center h-17.5 min-md:w-3/4 min-md:min-w-200 max-md:w-screen fixed z-51 min-md:top-5 min-md:left-1/8 min-md:rounded-[100px] shadow-lg bg-white dark:bg-[rgba(46,23,96,1)] max-md:h-10">
+        <div className="w-1/2 h-full flex justify-center max-md:w-1/2 max-md:min-w-1/2 max-md:justify-start">
+          <div className="h-25 flex items-center bg-neutral-800 dark:bg-[rgba(17,17,50,1)] max-md:hidden">
             <Link href="/"><Image src="/logo/logo2.png" alt="Logo" height={15} width={200} /></Link>
           </div>
           <Link href="/"><Image src="/logo/logo1.png" alt="Logo" className="min-md:hidden dark:invert" height={10} width={150} /></Link>
         </div>
-        <div className="w-1/3 h-full max-md:hidden"></div>
-        <nav className="w-1/3 h-full max-md:w-1/2 max-md:min-w-1/2">
+        <nav className="w-1/2 h-full max-md:w-1/2 max-md:min-w-1/2">
           <div className="h-full w-full flex justify-center items-center max-md:hidden text-lg">
             <Link href="/" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
                 <div className="text-black dark:text-white">Home</div>
@@ -56,7 +55,7 @@ export default function Nav() {
         </nav>
       </header>
       {shouldRenderNav && (
-        <nav id="mobile" className={` ${mobileNavOpen ? "navSlideDown" : "navSlideUp"} h-screen w-screen fixed z-50 bg-[rgba(234,235,237,1)] dark:bg-[rgba(23,23,56,1)] backdrop-blur-sm bg-opacity-60`}>
+        <nav id="mobile" className={` ${mobileNavOpen ? "navSlideDown" : "navSlideUp"} h-screen w-screen fixed z-50 bg-[rgba(234,235,237,1)] dark:bg-[rgba(23,23,56,1)] min-md:hidden`}>
             <div className="h-full w-full flex flex-col justify-center items-center gap-y-10">
                 <Link href="/" className="text-black hover:text-[rgba(0,105,137,1)] dark:text-white text-2xl dark:hover:text-white" onClick={toggleMobileNav}>Home</Link>
                 <Link href="/auth/login" className="text-black hover:text-[rgba(0,105,137,1)] dark:text-white text-2xl dark:hover:text-white" onClick={toggleMobileNav}>Login</Link>
