@@ -21,7 +21,7 @@ export default function Nav() {
 
   return (
     <>
-      <header className="flex items-center h-17.5 min-md:w-3/4 min-md:min-w-200 max-md:w-screen fixed z-51 min-md:top-5 min-md:left-1/8 min-md:rounded-[100px] shadow-lg bg-white dark:bg-[rgba(46,23,96,1)] max-md:h-10">
+      <header className="flex items-center h-17.5 min-md:w-3/4 min-md:min-w-200 max-md:w-screen max-md:min-w-95 fixed z-51 min-md:top-5 min-md:left-1/8 min-md:rounded-[100px] shadow-lg bg-white dark:bg-[rgba(46,23,96,1)] max-md:h-10">
         <div className="w-1/2 h-full flex justify-center max-md:w-1/2 max-md:min-w-1/2 max-md:justify-start">
           <div className="h-25 flex items-center bg-neutral-800 dark:bg-[rgba(17,17,50,1)] max-md:hidden">
             <Link href="/"><Image src="/logo/logo2.png" alt="Logo" height={15} width={200} /></Link>
@@ -33,7 +33,7 @@ export default function Nav() {
             <Link href="/" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
                 <div className="text-black dark:text-white">Home</div>
             </Link>
-            <Link href="/auth/login" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
+            <Link href="/auth" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
                 <div className="text-black dark:text-white">Login</div>
             </Link>
             <Link href="/profile" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
