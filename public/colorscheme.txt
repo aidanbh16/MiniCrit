@@ -1,13 +1,8 @@
 Light
-$lace-cap: rgba(234,235,237,1);
+$white: rgba(255,255,255,1); /*header*/
+$white-smoke: rgba(245,245,245,1); /*background*/
+$azure: rgba(0,127,255,1); /*button*/
 $techno-blue: rgba(0,105,137,1);
-neutral-800;
-neutral-200;
-white
+neutral-800; /*light logo*/
 
 Dark
-$tropical-indigo: rgba(125,131,255,1);
-$azure: rgba(0,127,255,1);
-$space-cadet: rgba(23,23,56,1);
-$idk-ourple: rgba(17,17,50,1);
-$federal-blue: rgba(46,23,96,1);

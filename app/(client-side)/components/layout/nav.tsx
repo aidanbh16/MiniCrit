@@ -33,7 +33,7 @@ export default function Nav() {
             <Link href="/" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
                 <div className="text-black dark:text-white">Home</div>
             </Link>
-            <Link href="/auth" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
+            <Link href="/auth/login" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
                 <div className="text-black dark:text-white">Login</div>
             </Link>
             <Link href="/profile" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
