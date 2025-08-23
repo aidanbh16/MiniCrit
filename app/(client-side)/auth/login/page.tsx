@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function Login(){
     return(
-        <div className="h-329 max-md:h-screen w-screen bg-[rgba(234,235,237,1)] dark:bg-[rgba(23,23,56,1)] overflow-x-hidden">
+        <div className="h-screen w-screen bg-[rgba(234,235,237,1)] dark:bg-[rgba(23,23,56,1)] overflow-x-hidden">
             <div className="h-full min-md:w-2/3 max-md:w-full flex items-center justify-center">
                 <div className="w-3/5 min-w-150 max-w-200 h-120 flex flex-col items-center text-black border-r-1 border-r-black dark:border-r-white max-md:border-none">
                     <form action="" className="w-1/2 h-4/5 m-auto flex flex-col justify-center gap-y-2" autoComplete="off">
