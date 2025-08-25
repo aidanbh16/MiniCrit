@@ -1,9 +1,18 @@
 "use client";
 
+//Next components
 import Link from "next/link";
 import Image from "next/image";
-import DarkModeToggle from "../ui/darkmode";
 import { useState } from "react";
+
+//UI Components
+import DarkModeToggle from "../ui/darkmode";
+
+//SVG Components
+import HomeIcon from "@/public/nav/home.svg"
+import ProfileIcon from "@/public/nav/user.svg"
+import AboutIcon from "@/public/nav/info.svg"
+import UpdatesIcon from "@/public/nav/refresh.svg"
 
 export default function Nav() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -32,28 +41,43 @@ export default function Nav() {
         <search className="w-1/3 h-full flex justify-center items-center bg-white max-md:hidden">
           <input type="text" placeholder="search" className="w-3/4 h-1/2 border-1 border-black rounded-4xl text-black p-3"></input>
         </search>
-        <nav className="w-1/3 h-full max-md:w-1/2 max-md:min-w-1/2">
-          <div className="h-full w-full flex justify-center items-center max-md:hidden text-lg">
+        <nav className="w-1/3 h-full max-md:w-1/2 max-md:min-w-1/2 flex justify-end items-center">
+          <div className="h-full w-full flex max-md:hidden text-lg max-w-120">
             <Link href="/" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
-              <div className="text-black dark:text-white">Home</div>
+              <div className="w-full h-2/3 flex flex-col justify-center items-center">
+                <HomeIcon  className="w-full h-1/2"/>
+                <div className="w-full h-1/2 text-black dark:text-white flex flex-col justify-center items-center">Home</div>
+              </div>
             </Link>
             {accountState ? 
               <Link href="/profile" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
-                <div className="text-black dark:text-white">Profile</div>
+                <div className="w-full h-2/3 flex flex-col justify-center items-center">
+                  <ProfileIcon  className="w-full h-1/2"/>
+                  <div className="w-full h-1/2 text-black dark:text-white flex flex-col justify-center items-center">Profile</div>
+                </div>
               </Link>
               :
               <Link href="/auth/login" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
-                <div className="text-black dark:text-white">Login</div>
+                <div className="w-full h-2/3 flex flex-col justify-center items-center">
+                  <ProfileIcon  className="w-full h-1/2"/>
+                  <div className="w-full h-1/2 text-black dark:text-white flex flex-col justify-center items-center">Login</div>
+                </div>
               </Link>
             }
             <Link href="/about" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
-              <div className="text-black dark:text-white">About</div>
+              <div className="w-full h-2/3 flex flex-col justify-center items-center">
+                <AboutIcon  className="w-full h-1/2"/>
+                <div className="w-full h-1/2 text-black dark:text-white flex flex-col justify-center items-center">About</div>
+              </div>
             </Link>
-            <Link href="/updates" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
-              <div className="text-black dark:text-white">Updates</div>
+            <Link href="/about" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
+              <div className="w-full h-2/3 flex flex-col justify-center items-center">
+                <UpdatesIcon  className="w-full h-1/2"/>
+                <div className="w-full h-1/2 text-black dark:text-white flex flex-col justify-center items-center">Updates</div>
+              </div>
             </Link>
             <div className="flex justify-center items-center w-full h-full">
-              <DarkModeToggle/>
+              <DarkModeToggle />
             </div>
           </div>
           <div className="h-full w-full flex justify-end items-center pr-2 min-md:hidden">

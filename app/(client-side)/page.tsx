@@ -1,8 +1,7 @@
 "use client"
 
-import QuickFilter from "./components/layout/quickFilter";
-import QuickUpdates from "./components/layout/quickUpdates";
-import PostLayout from "./components/layout/postLayout";
+import QuickFilter from "./components/layout/quick-filter";
+import PostLayout from "./components/layout/post-layout";
 
 export default function Home() {
   return (

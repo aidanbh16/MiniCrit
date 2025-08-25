@@ -55,6 +55,7 @@ body {
     transform: translateY(-100%);
     opacity: 0;
   }
+  
 }
 
 @layer utilities {
