@@ -1,25 +1,24 @@
 import { Pool } from "pg";
 
 declare global {
-  var devpool: Pool;
+  var devPool: Pool | undefined;
 }
 
-const pool = global.devpool ?? new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
-  });
+for (const k of ["DB_HOST","DB_USER","DB_PASSWORD","DB_NAME","DB_PORT"]) {
+  if (!process.env[k]) throw new Error(`Missing env ${k} in .env`);
+}
 
-pool.connect()
-  .then(client => {
-    console.log("Connected to DB successfully");
-    client.release();
-  })
-  .catch(err => {
-    console.error("Error connecting to DB:", err);
+const pool = global.devPool ?? new Pool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: Number(process.env.DB_PORT ?? 5432),
+  ssl: { rejectUnauthorized: false },
 });
 
-if (process.env.NODE_ENV !== "production") {
-  global.devpool = pool;
+if (process.env.NODE_ENV !== "production"){
+  global.devPool = pool;
 }
 
 export default pool;

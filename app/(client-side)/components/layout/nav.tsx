@@ -17,7 +17,7 @@ import UpdatesIcon from "@/public/nav/refresh.svg"
 export default function Nav() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [shouldRenderNav, setShouldRenderNav] = useState(false);
-  const [accountState, setAccountState] = useState(true);
+  const [accountState, setAccountState] = useState(false);
 
   const toggleMobileNav = () => {
     if (!mobileNavOpen) {
@@ -70,7 +70,7 @@ export default function Nav() {
                 <div className="w-full h-1/2 text-black dark:text-white flex flex-col justify-center items-center">About</div>
               </div>
             </Link>
-            <Link href="/about" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
+            <Link href="/updates" className="hover:bg-neutral-200 dark:hover:bg-[rgba(51,28,101,1)] flex justify-center items-center w-full h-full">
               <div className="w-full h-2/3 flex flex-col justify-center items-center">
                 <UpdatesIcon  className="w-full h-1/2"/>
                 <div className="w-full h-1/2 text-black dark:text-white flex flex-col justify-center items-center">Updates</div>
