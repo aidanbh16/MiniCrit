@@ -11,7 +11,7 @@ import CodingIcon from "@/public/subjectIcons/coding.svg";
 
 export default function QuickFilter(){
   return(
-    <div className="h-1/30 w-1/6 min-w-50 max-w-80 min-2xl:h-6 bg-white flex justify-center items-center rounded-[50px] relative top-2.5">
+    <div className="h-1/30 w-1/6 min-w-50 max-w-80 min-2xl:h-6 bg-white flex justify-center items-center border-1 border-black relative top-2.5">
       <div className="h-full w-1/8">
         <ArrowLeft className="w-full h-full text-black hover:cursor-pointer hover:text-white hover:bg-black rounded-l-2xl"/>
       </div>
