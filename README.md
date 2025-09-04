@@ -24,13 +24,13 @@
 * Tidied project structure with path aliases and clear separation of concerns (src/app, src/actions, src/lib, src/components, src/vectors)
 
 ## Planned Features
-- [] Logout + token rotation and session management hardening
-- [] Updates feed: basic CRUD for posts (create, list, edit, delete)
-- [] Profile editing (display name, bio, avatar)
-- [] Form UX: inline error messages with useActionState
-- [] Rate limiting & brute-force protection on auth actions
-- [] Email verification flow (optional)
-- [] Accessibility & tests: keyboard nav, ARIA, unit/integration tests
+- [ ] Logout + token rotation and session management hardening
+- [ ] Updates feed: basic CRUD for posts (create, list, edit, delete)
+- [ ] Profile editing (display name, bio, avatar)
+- [ ] Form UX: inline error messages with useActionState
+- [ ] Rate limiting & brute-force protection on auth actions
+- [ ] Email verification flow (optional)
+- [ ] Accessibility & tests: keyboard nav, ARIA, unit/integration tests
 
 ## How to Start
 
