@@ -1,4 +1,8 @@
-![MiniCrit](./public/logo/logo2.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./public/logo/logo2.png">
+  <source media="(prefers-color-scheme: light)" srcset="./public/logo/logo1.png">
+</picture>
+
 
 This project is currently a work in progress as of September 2025.
 
