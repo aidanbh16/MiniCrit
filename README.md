@@ -1,4 +1,4 @@
-# MiniCrit
+![MiniCrit](./public/logo/logo2.png)
 
 MiniCrit Description
 
