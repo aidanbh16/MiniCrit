@@ -47,7 +47,7 @@ DB_HOST=HOST
 DB_USER=USER
 DB_PASSWORD=PASSWORD
 DB_NAME=DBNAME
-DB_PORT=5432
+DB_PORT=PORT
 ```
 
 ### Database Setup (Will automate this later)
