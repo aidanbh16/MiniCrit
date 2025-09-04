@@ -13,8 +13,8 @@ TANP
 * Tools: Git & GitHub
 
 ## Current Features
-* Auth foundation: signup + login via Server Actions with server-side validation and bcrypt hashing
-* PostgreSQL integration for user data (schemas/scripts included)
+* Basic page routing (Next.js App Router)
+* Sign-up form → database insert: the form submits `FormData` server-side and creates a user record in the PostgreSQL DB after using bcrypt hashing to encrypt the user's password.
 
 ## Planned Features
 - [ ] Short-lived session via JWT stored in an HttpOnly cookie (auth-aware nav ready)
