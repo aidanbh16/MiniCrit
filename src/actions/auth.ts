@@ -6,37 +6,39 @@ import { hash } from "@/lib/hash"
 import { createUser } from "@/lib/users"
 
 export async function login(formData: FormData) {
+    const username = String(formData.get("user"));
+    const pass = String(formData.get("password"));
+
+    let check = false;
     try {
-        const username = String(formData.get("user"));
-        const pass = String(formData.get("password"));
-
-        const check = await compare(username, pass)
-        if(check !== true){
-            redirect("/auth/login")
-        }
-
-        redirect("/")
+        check = await compare(username, pass)
     } catch (error) {
         console.log("Error: ", error);
+    }
+
+    if(check !== true){
+        redirect("/auth/login")
+    }else{
+        redirect("/")
     }
 }
 
 export async function signup(formData: FormData) {
-    try {
-        const user = String(formData.get("username"))
-        const email = String(formData.get("email"))
-        const pass = String(formData.get("password"))
-        const conf = String(formData.get("confirm"))
+    const user = String(formData.get("username"))
+    const email = String(formData.get("email"))
+    const pass = String(formData.get("password"))
+    const conf = String(formData.get("confirm"))
 
-        if(pass !== conf){
-            redirect("/auth/signup")
-        }
-    
+    if(pass !== conf){
+        redirect("/auth/signup")
+    }
+
+    try {
         const hashedPass = await hash(pass)
         await createUser(user, email, hashedPass)
-
-        redirect("/auth/login")
     } catch (error) {
         console.log("Error: ", error)
     }
+
+    redirect("/auth/login")
 }
