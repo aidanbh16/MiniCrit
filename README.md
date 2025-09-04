@@ -13,11 +13,8 @@ TANP
 * Tools: Git & GitHub
 
 ## Current Features
-* Responsive navigation with mobile slide-down menu and a dark mode toggle
 * Auth foundation: signup + login via Server Actions with server-side validation and bcrypt hashing
 * PostgreSQL integration for user data (schemas/scripts included)
-* SVG icon pipeline using SVGR for themable, scalable icons
-* Tidied project structure with path aliases and clear separation of concerns (src/app, src/actions, src/lib, src/components, src/vectors)
 
 ## Planned Features
 - [ ] Short-lived session via JWT stored in an HttpOnly cookie (auth-aware nav ready)
