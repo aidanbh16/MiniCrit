@@ -1,11 +1,11 @@
 # MiniCrit
 
-## Description
+### Description
 
-### checking what this lookd like
+checking what this lookd like
 
-## Current Tech Stack
-### TANP
+### Current Tech Stack
+TANP
 * Framework: Next.js (App Router, Server/Client Components, Server Actions)
 * Languages: TypeScript, JavaScript, SQL
 * Styling: Tailwind CSS, CSS
@@ -14,7 +14,7 @@
 * Assets: SVGR (Import .svg files as React components)
 * Tools: Git & GitHub
 
-## Current Features
+### Current Features
 * Responsive navigation with mobile slide-down menu and a dark mode toggle
 * Auth foundation: signup + login via Server Actions with server-side validation and bcrypt hashing
 * Short-lived session via JWT stored in an HttpOnly cookie (auth-aware nav ready)
@@ -23,7 +23,7 @@
 * SVG icon pipeline using SVGR for themable, scalable icons
 * Tidied project structure with path aliases and clear separation of concerns (src/app, src/actions, src/lib, src/components, src/vectors)
 
-## Planned Features
+### Planned Features
 - [ ] Logout + token rotation and session management hardening
 - [ ] Updates feed: basic CRUD for posts (create, list, edit, delete)
 - [ ] Profile editing (display name, bio, avatar)
