@@ -63,7 +63,9 @@ init_posts.sql
 init_users.sql
 ```
 Run this command at least once in your database management tool or cli:
-`CREATE EXTENSION IF NOT EXISTS pgcrypto;`
+```
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+```
 
 ### Run Dev Server
 `npm run dev`
