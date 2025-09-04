@@ -1,6 +1,6 @@
 ![MiniCrit](./public/logo/logo2.png)
 
-MiniCrit Description
+This project is currently a work in progress as of September 2025.
 
 ## Current Tech Stack
 * Framework: Next.js (App Router, Server/Client Components, Server Actions)
