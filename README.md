@@ -3,7 +3,6 @@
 MiniCrit Description
 
 ## Current Tech Stack
-TANP
 * Framework: Next.js (App Router, Server/Client Components, Server Actions)
 * Languages: TypeScript, JavaScript, SQL
 * Styling: Tailwind CSS, CSS
