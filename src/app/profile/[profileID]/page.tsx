@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-export default function Profile() {
+export default async function Profile({params}: {params: Promise<{userId: string, username: string; }>}) {
     return (
-      <div className="h-screen w-screen bg-[rgba(234,235,237,1)] dark:bg-[rgba(23,23,56,1)] overflow-x-hidden flex justify-center items-center">
+      <div className="h-screen w-screen bg-[#c3cee5] overflow-x-hidden flex justify-center items-center">
         <div className="h-2/3 w-2/3 flex items-center justify-center">
           <div className="h-full w-full flex flex-col items-center justify-center">
             <div className="h-full w-full flex items-center justify-center">

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { selectUser } from "@/lib/users"
+
 // Components
 import Nav from "../components/layout/nav";
 import Footer from "../components/layout/footer";
-
 
 export const metadata: Metadata = {
   title: "MiniCrit",
@@ -17,11 +18,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+  const user = await selectUser("");
   return (
     <html lang="en" className="no-scrollbar">
       <body className="no-scrollbar overflow-y-scroll overflow-x-hidden">
-        <Nav />
+        <Nav user={user} />
         {children}
         <Footer />
       </body>

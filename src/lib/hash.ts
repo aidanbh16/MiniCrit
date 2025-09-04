@@ -1,3 +1,4 @@
+import "server-only"
 import bcrypt from "bcrypt";
 
 export async function hash(pass: string){

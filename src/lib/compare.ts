@@ -1,3 +1,4 @@
+import "server-only"
 import bcrypt from "bcrypt"
 import pool from "@/lib/db"
 
