@@ -38,9 +38,32 @@ Node.js 18.18+ or 20+
 
 PostgreSQL 13+
 
-### Clone & Install:
+### Clone & Install
 ```
 git clone <your-repo-url>
 cd <repo>
 npm i
 ```
+
+### Environment Setup
+Create `.env` in the project root with:
+```
+DB_HOST=HOST
+DB_USER=USER
+DB_PASSWORD=PASSWORD
+DB_NAME=DBNAME
+DB_PORT=PORT
+```
+
+### Database Setup (Will automate this later)
+Run these files at least once in your database management tool or cli:
+```
+init_log.sql
+init_posts.sql
+init_users.sql
+```
+Run this command at least once in your database management tool or cli:
+`CREATE EXTENSION IF NOT EXISTS pgcrypto;`
+
+### Run Dev Server
+`npm run dev`
