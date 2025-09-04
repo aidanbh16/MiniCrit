@@ -1,6 +1,6 @@
 # MiniCrit
 
-checking what this lookd like
+MiniCrit Description
 
 ## Current Tech Stack
 TANP
@@ -15,20 +15,18 @@ TANP
 ## Current Features
 * Responsive navigation with mobile slide-down menu and a dark mode toggle
 * Auth foundation: signup + login via Server Actions with server-side validation and bcrypt hashing
-* Short-lived session via JWT stored in an HttpOnly cookie (auth-aware nav ready)
-* Pages scaffold: Home, About, Updates, Profile
 * PostgreSQL integration for user data (schemas/scripts included)
 * SVG icon pipeline using SVGR for themable, scalable icons
 * Tidied project structure with path aliases and clear separation of concerns (src/app, src/actions, src/lib, src/components, src/vectors)
 
 ## Planned Features
+- [ ] Short-lived session via JWT stored in an HttpOnly cookie (auth-aware nav ready)
 - [ ] Logout + token rotation and session management hardening
-- [ ] Updates feed: basic CRUD for posts (create, list, edit, delete)
+- [ ] Posts feed: basic CRUD for posts (create, list, edit, delete)
+- [ ] Updates feed: basic CRUD for update log (create, list, edit, delete)
 - [ ] Profile editing (display name, bio, avatar)
-- [ ] Form UX: inline error messages with useActionState
 - [ ] Rate limiting & brute-force protection on auth actions
-- [ ] Email verification flow (optional)
-- [ ] Accessibility & tests: keyboard nav, ARIA, unit/integration tests
+- [ ] Email verification flow
 
 ## How to Start
 
@@ -40,8 +38,8 @@ PostgreSQL 13+
 
 ### Clone & Install
 ```
-git clone <your-repo-url>
-cd <repo>
+git clone https://github.com/aidanbh16/MiniCrit
+cd MiniCrit
 npm i
 ```
 
@@ -56,15 +54,15 @@ DB_PORT=PORT
 ```
 
 ### Database Setup (Will automate this later)
+Run this command at least once in your database management tool or cli:
+```
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+```
 Run these files at least once in your database management tool or cli:
 ```
 init_log.sql
 init_posts.sql
 init_users.sql
-```
-Run this command at least once in your database management tool or cli:
-```
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
 ```
 
 ### Run Dev Server
