@@ -21,7 +21,7 @@ TANP
 - [ ] Logout + token rotation and session management hardening
 - [ ] Posts feed: basic CRUD for posts (create, list, edit, delete)
 - [ ] Updates feed: basic CRUD for update log (create, list, edit, delete)
-- [ ] Profile editing (display name, bio, avatar)
+- [ ] Profile editing (username, description, avatar)
 - [ ] Rate limiting & brute-force protection on auth actions
 - [ ] Email verification flow
 
