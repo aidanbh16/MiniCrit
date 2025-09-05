@@ -1,5 +1,6 @@
 import "server-only"
 import { Pool } from "pg";
+export const runtime = 'nodejs';
 
 declare global {
   var devPool: Pool | undefined;
