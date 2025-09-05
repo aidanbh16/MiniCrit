@@ -1,7 +1,5 @@
 'use server'
 
-export const runtime = 'nodejs';
-
 import { compare } from "@/lib/compare"
 import { redirect } from "next/navigation";
 import { hash } from "@/lib/hash"
