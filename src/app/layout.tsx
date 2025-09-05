@@ -18,13 +18,15 @@ export const metadata: Metadata = {
   },
 };
 
+const id = ""
+
 export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
-  const user = await selectUser("");
+  const user = await selectUser(id);
 
   return (
     <html lang="en" className="no-scrollbar">
       <body className="no-scrollbar overflow-y-scroll overflow-x-hidden">
-        <Nav user={user} />
+        <Nav user={user}/>
         {children}
         <Footer />
       </body>

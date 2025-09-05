@@ -26,10 +26,12 @@ export default function Nav({user}: {user: string}) {
   let profile;
 
   const userLink = `/profile/${user}`
-  if (user.length > 12){ 
-    profile = "Profile"
-  }else{
-    profile = user
+  if (user){
+    if (user.length > 12){ 
+      profile = "Profile"
+    }else{
+      profile = user
+    }
   }
 
   const toggleMobileNav = () => {

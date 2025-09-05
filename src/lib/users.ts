@@ -6,7 +6,7 @@ export async function createUser(username: string, email: string, hash: string) 
 }
 
 export async function selectUser(id: string){
-  if(id == "" || null){
+  if(id == ""){
     return null
   }
   const { rows } = await pool.query("SELECT username FROM users WHERE id = $1", [id])
