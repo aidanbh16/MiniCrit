@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
-  const user = await selectUser("8bf417d3-2f89-4243-8210-340b2640981e");
+  const user = await selectUser("");
 
   return (
     <html lang="en" className="no-scrollbar">
