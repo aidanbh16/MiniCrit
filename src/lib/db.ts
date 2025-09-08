@@ -1,22 +1,20 @@
 import "server-only"
 import { Pool } from "pg";
-export const runtime = 'nodejs';
 
 declare global {
   var devPool: Pool | undefined;
 }
 
-for (const k of ["DB_HOST","DB_USER","DB_PASSWORD","DB_NAME","DB_PORT"]) {
-  if (!process.env[k]) {
-    throw new Error(`Missing env ${k} in .env`)
-  }
+const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
+if (!DB_HOST || !DB_USER || !DB_PASSWORD || !DB_NAME) {
+  throw new Error('DB config missing at runtime (check Amplify Runtime envs)');
 }
 
 const pool = global.devPool ?? new Pool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: DB_HOST,
+  user: DB_USER,
+  password: DB_PASSWORD,
+  database: DB_NAME,
   port: Number(process.env.DB_PORT ?? 5432),
   ssl: { rejectUnauthorized: false },
 });

@@ -56,7 +56,7 @@ export default function Nav({user}: {user: string}) {
         <search className="w-1/3 h-full flex justify-center items-center bg-white max-md:hidden">
           <input type="text" placeholder="search" className="w-3/4 h-1/2 border-1 border-black text-black p-3"></input>
         </search>
-        <nav className="w-1/3 h-full max-md:w-1/2 max-md:min-w-1/2 flex justify-start items-center">
+        <nav className="w-1/3 h-full max-md:w-1/2 max-md:min-w-1/2 flex justify-end items-center">
           <div className="h-full w-full flex max-md:hidden text-lg max-w-120">
             <Link href="/" className="hover:bg-neutral-200 flex justify-center items-center w-full h-full">
               <div className="w-full h-2/3 flex flex-col justify-center items-center">
