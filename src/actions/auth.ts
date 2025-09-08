@@ -28,7 +28,7 @@ export async function signup(formData: FormData) {
     const email = String(formData.get("email"))
     const pass = String(formData.get("password"))
     const conf = String(formData.get("confirm"))
-
+    
     if(pass !== conf){
         redirect("/auth/signup")
     }
