@@ -17,6 +17,10 @@ const pool = global.devPool ?? new Pool({
   database: DB_NAME,
   port: Number(process.env.DB_PORT ?? 5432),
   ssl: { rejectUnauthorized: false },
+  max: 5,
+  idleTimeoutMillis: 10_000,
+  connectionTimeoutMillis: 5_000,
+  keepAlive: true,
 });
 
 if (process.env.NODE_ENV !== "production"){
