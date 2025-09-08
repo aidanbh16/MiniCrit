@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const id = ""
+const id = "514ca32c-2c14-4371-8dcd-04282259c11f"
 
 export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   const user = await selectUser(id);
