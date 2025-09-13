@@ -1,15 +1,26 @@
 import 'server-only'
 import { Pool } from 'pg'
 
-declare global { var __pool: Pool | undefined }
+const pool = new Pool({
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    database: process.env.DB_NAME,
+    connectionString: process.env.DB_URL,
+    ssl: { rejectUnauthorized: false },
+})
 
-const pool =
-  global.__pool ??
-  new Pool({
-    connectionString: process.env.DATABASE_URL!,
-    ssl: { rejectUnauthorized: false }
-  })
+async function healthCheck(){
+  try{
+    const client = await pool.connect()
+    console.log(await client.query('SELECT * FROM users'))
+    client.release()
+  }catch{
+    console.log("DB failed to connect!")
+  }
+}
 
-if (!global.__pool) global.__pool = pool
+healthCheck()
 
-export default pool
+export default pool;

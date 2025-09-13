@@ -1,3 +1,4 @@
+export const runtime = 'nodejs'
 import { signup } from "@/actions/auth"
 
 import Image from "next/image"

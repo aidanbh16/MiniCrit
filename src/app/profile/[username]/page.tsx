@@ -1,6 +1,10 @@
+export const runtime = 'nodejs'
+
 import Image from "next/image";
 
-export default async function Profile({params}: {params: Promise<{userId: string, username: string; }>}) {
+export default async function Profile({params}: {params: Promise<{ username: string }>}) {
+    const user = await params;
+
     return (
       <div className="h-screen w-screen bg-[#c3cee5] overflow-x-hidden flex justify-center items-center">
         <div className="h-2/3 w-2/3 flex items-center justify-center">
@@ -13,7 +17,7 @@ export default async function Profile({params}: {params: Promise<{userId: string
               </div>
               <div className="h-full w-1/2 bg-green-100">
                 <ul className="text-black">
-                  <li>Username</li>
+                  <li>{user.username}</li>
                   <li>Username</li>
                   <li>Username</li>
                   <li>Username</li>
