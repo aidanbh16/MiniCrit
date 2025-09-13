@@ -13,10 +13,6 @@ const pool = new Pool({
     ssl: SSL_CONFIG!,
 })
 
-if(pool){
-  await pool.query('SELECT * FROM users');
-}
-
 async function healthCheck(){
   try{
     const client = await pool.connect()
