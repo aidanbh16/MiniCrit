@@ -12,16 +12,13 @@ export async function hash(pass: string){
 export async function compare(user: string, pass: string){
     console.log("Attempting compare");
     try{
-        const client = await pool.connect()
-        const { rows } = await client.query('SELECT password_hash FROM users WHERE username=$1', [user]);
+        const { rows } = await pool.query('SELECT password_hash FROM users WHERE username=$1', [user]);
         if(!await bcrypt.compare(pass, rows[0].password_hash)){
             console.log("L fail");
-            client.release()
             return null
         }else{
-            const { rows } = await client.query('SELECT id FROM users WHERE username=$1', [user]);
+            const { rows } = await pool.query('SELECT id FROM users WHERE username=$1', [user]);
             console.log("YAY ITS EQUAL!!")
-            client.release()
             return rows[0].id
         }
     } catch(err){

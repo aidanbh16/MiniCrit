@@ -13,16 +13,4 @@ const pool = new Pool({
     ssl: SSL_CONFIG!,
 })
 
-async function healthCheck(){
-  try{
-    const client = await pool.connect()
-    console.log(await client.query('SELECT * FROM users'))
-    client.release()
-  }catch{
-    console.log("DB failed to connect!")
-  }
-}
-
-healthCheck()
-
 export default pool;
