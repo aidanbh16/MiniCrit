@@ -21,7 +21,7 @@ const passLowerRegex = /[a-z]/
 const passSpecialRegex = /^[A-Za-z0-9!#@$%&*?]+$/
 
 export async function signupTests(user: User): Promise<boolean | FieldError>{
-    if(user.password == user.confirm){
+    if(user.password !== user.confirm){
         return {error: "Passwords do not match", fields: {username: user.username, email: user.email}}
     }
 

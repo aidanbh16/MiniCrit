@@ -43,7 +43,7 @@ export async function signup(prev: FieldError, formData: FormData): Promise<Fiel
     };
 
     const result = await signupTests(user)
-    if (result != Boolean){
+    if (result !== true){
         return result as FieldError
     }
 
