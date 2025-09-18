@@ -15,17 +15,80 @@ This project is currently a work in progress as of September 2025.
 * Tools: Git & GitHub
 
 ## Current Features
-* Basic page routing (Next.js App Router)
-* Sign-up form → database insert: the form submits `FormData` server-side and creates a user record in the PostgreSQL DB after using bcrypt hashing to encrypt the user's password.
+- Sign-up Page
+  - Sign-up form
+    - Username input
+    - Email input
+    - Password input
+    - Confirm password input
+  - Runs sign-up test cases
+  - Encrypts password
+  - Creates user in database
+  - Redirects to login page
 
 ## Planned Features
-- [ ] Short-lived session via JWT stored in an HttpOnly cookie (auth-aware nav ready)
-- [ ] Logout + token rotation and session management hardening
-- [ ] Posts feed: basic CRUD for posts (create, list, edit, delete)
-- [ ] Updates feed: basic CRUD for update log (create, list, edit, delete)
-- [ ] Profile editing (username, description, avatar)
-- [ ] Rate limiting & brute-force protection on auth actions
-- [ ] Email verification flow
+- [ ] Home Page
+  - [ ] Posts
+    - Create posts
+      - Title
+      - Text
+      - Tags
+      - Img/video
+      - Likes/dislikes
+      - Comments
+        - Text
+        - Delete comments
+      - Delete posts
+    - [ ] Filter posts by tags
+      - Quick Filter component
+      - Filter list component
+    - [ ] Sort by
+      - Sort by likes/dislikes
+      - Sort by newest
+- [ ] Sign-in Page
+  - [ ] Sign-in form
+    - Username input
+    - Password input
+  - [ ] Compares input to database
+  - [ ] Generates JWT token
+  - [ ] Redirects to Home Page
+- [x] Sign-up Page
+  - [x] Sign-up form
+    - Username input
+    - Email input
+    - Password input
+    - Confirm password input
+  - [x] Runs sign-up test cases
+  - [x] Encrypts password
+  - [x] Creates user in database
+  - [x] Redirects to login page
+- [ ] Profile Page
+  - [ ] Generating profile
+    - Profile picture
+    - Username
+    - Bio
+    - Preferred tags
+    - Own posts
+      - See posts
+      - Delete posts
+  - [ ] Editing profile
+    - Profile picture
+    - Username
+    - Bio
+    - Preferred tags
+- [ ] About Page
+  - [ ] About Project
+  - [ ] About me
+  - [ ] Contact
+    - [ ] Email Microservice
+      - Username input
+        - Token: pull username
+        - No token: input username
+      - Email input
+      - Text
+      - Attach files
+- [ ] Updates Page
+  - [ ] Update log of app
 
 ## How to Start
 
