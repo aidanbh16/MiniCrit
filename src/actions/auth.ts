@@ -7,7 +7,15 @@ import { createUser } from "@/lib/user"
 import { generateToken } from "@/lib/token";
 import { signupTests } from "~/tests/signup.test";
 
-export async function login(formData: FormData) {
+type LoginFieldError = {
+    error?: string,
+    fields?: { 
+        username: string, 
+        password: string,
+    },
+}
+
+export async function login(prev: LoginFieldError, formData: FormData): Promise<LoginFieldError | never> {
     const user = {
         id: null,
         username: String(formData.get("user")),
@@ -15,18 +23,16 @@ export async function login(formData: FormData) {
     }
 
     try {
-        user.id = await compare(user.username, user.password)
-        console.log(user.id, " arrived safely")
+        const result = await compare(user.username, user.password)
         const token = await generateToken(user.id, user.username)
         console.log(token)
         redirect("/")
     } catch (error) {
-        console.log("Error: ", error);
-        redirect("/auth/login")
+        return {error: Result.error, fields{user.username, user.password}}
     }
 }
 
-type FieldError = {
+type SignupFieldError = {
     error?: string,
     fields?: { 
         username: string, 
@@ -34,7 +40,7 @@ type FieldError = {
     },
 }
 
-export async function signup(prev: FieldError, formData: FormData): Promise<FieldError | never> {
+export async function signup(prev: SignupFieldError, formData: FormData): Promise<SignupFieldError | never> {
     const user = {
         username: String(formData.get("username")),
         email: String(formData.get("email")),
@@ -44,7 +50,7 @@ export async function signup(prev: FieldError, formData: FormData): Promise<Fiel
 
     const result = await signupTests(user)
     if (result !== true){
-        return result as FieldError
+        return result as SignupFieldError
     }
 
     const hashedPass = await hash(user.password);

@@ -9,7 +9,7 @@ type User = {
     confirm: string,
 }
 
-type FieldError = {
+type SignupFieldError = {
     error?: string,
     fields?: { 
         username: string, 
@@ -22,7 +22,7 @@ const passUpperRegex = /[A-Z]/
 const passLowerRegex = /[a-z]/
 const passSpecialRegex = /^[A-Za-z0-9!#@$%&*?]+$/
 
-export async function signupTests(user: User): Promise<boolean | FieldError>{
+export async function signupTests(user: User): Promise<boolean | SignupFieldError>{
     const userResult = await pool.query('SELECT username FROM users WHERE username=$1 ', [user.username])
     const userCheck = userResult.rows.length > 0 ? userResult.rows[0].username : undefined
     console.log(userCheck)

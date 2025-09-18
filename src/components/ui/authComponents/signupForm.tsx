@@ -5,7 +5,7 @@ import { useActionState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-type FieldError = {
+type SignupFieldError = {
     error?: string | undefined,
     fields?: { 
         username: string, 
@@ -13,7 +13,7 @@ type FieldError = {
     } | undefined,
 }
 
-const initialState: FieldError = { error: undefined, fields: undefined}
+const initialState: SignupFieldError = { error: undefined, fields: undefined}
 
 export default function SignupForm(){
     const [state, formAction] = useActionState(signup, initialState)
