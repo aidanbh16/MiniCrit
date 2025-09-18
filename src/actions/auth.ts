@@ -9,27 +9,29 @@ import { signupTests } from "~/tests/signup.test";
 
 type LoginFieldError = {
     error?: string,
-    fields?: { 
-        username: string, 
-        password: string,
-    },
+    username?: string,
 }
 
 export async function login(prev: LoginFieldError, formData: FormData): Promise<LoginFieldError | never> {
     const user = {
-        id: null,
+        id: "",
         username: String(formData.get("user")),
         password: String(formData.get("password"))
     }
 
     try {
         const result = await compare(user.username, user.password)
+        if(typeof result !== "string"){
+            throw result as LoginFieldError
+        }
+        user.id = result
         const token = await generateToken(user.id, user.username)
         console.log(token)
-        redirect("/")
-    } catch (error) {
-        return {error: Result.error, fields{user.username, user.password}}
+    } catch (err: any) {
+        console.log("checkError2")
+        return {error: err.error, username: err.username}
     }
+    redirect("/")
 }
 
 type SignupFieldError = {

@@ -6,9 +6,7 @@ import pool from "@/lib/db"
 
 type LoginFieldError = {
     error?: string,
-    fields?: { 
-        username: string,
-    },
+    username?: string,
 }
 
 export async function hash(pass: string){
@@ -18,13 +16,13 @@ export async function hash(pass: string){
 
 export async function compare(user: string, pass: string): Promise<string | LoginFieldError>{
     try{
-        const result = await pool.query('SELECT password_hash FROM users WHERE password=$1', [pass]);
+        const result = await pool.query('SELECT password_hash FROM users WHERE username=$1', [user]);
         if(await bcrypt.compare(pass, result.rows[0].password_hash)){
             return result.rows[0].password_hash
         }else{
-            
+            throw {error: "Invalid password", username: user} as LoginFieldError
         }
-    } catch(err){
-        return {error: "Invalid password", fields: {username: user}}
+    } catch(error: any){
+        return error
     }
 }
