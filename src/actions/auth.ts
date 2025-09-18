@@ -1,10 +1,9 @@
 'use server'
 
-import { compare } from "@/lib/bcrypt"
+import { hash, compare } from "@/lib/bcrypt"
 import { redirect } from "next/navigation";
-import { hash } from "@/lib/hash"
 import { createUser } from "@/lib/user"
-import { generateToken } from "@/lib/token";
+import { generateSession } from "~/src/lib/session";
 import { signupTests } from "~/tests/signup.test";
 
 type LoginFieldError = {
@@ -14,7 +13,7 @@ type LoginFieldError = {
 
 export async function login(prev: LoginFieldError, formData: FormData): Promise<LoginFieldError | never> {
     const user = {
-        id: "",
+        id: "null",
         username: String(formData.get("user")),
         password: String(formData.get("password"))
     }
@@ -25,8 +24,9 @@ export async function login(prev: LoginFieldError, formData: FormData): Promise<
             throw result as LoginFieldError
         }
         user.id = result
-        const token = await generateToken(user.id, user.username)
-        console.log(token)
+
+        const token = await generateSession(user.id, user.username)
+
     } catch (err: any) {
         console.log("checkError2")
         return {error: err.error, username: err.username}
