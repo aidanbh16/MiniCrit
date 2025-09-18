@@ -1,15 +1,13 @@
 import 'server-only'
 import { Pool } from 'pg'
 
-declare global { var __pool: Pool | undefined }
+const pool = new Pool({
+    user: process.env.DB_USER!,
+    password: process.env.DB_PASS!,
+    host: process.env.DB_HOST!,
+    port: Number(process.env.DB_PORT)!,
+    database: process.env.DB_NAME!,
+    ssl: { rejectUnauthorized: false },
+})
 
-const pool =
-  global.__pool ??
-  new Pool({
-    connectionString: process.env.DATABASE_URL!,
-    ssl: { rejectUnauthorized: false }
-  })
-
-if (!global.__pool) global.__pool = pool
-
-export default pool
+export default pool;

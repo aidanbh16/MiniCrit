@@ -1,10 +1,11 @@
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic';
+
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { selectUser } from "@/lib/users"
-
 // Components
-import Nav from "../components/layout/nav";
+import NavServer from "../components/server/navServer"
 import Footer from "../components/layout/footer";
 
 export const metadata: Metadata = {
@@ -18,15 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-const id = ""
 
 export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
-  const user = await selectUser(id);
-
   return (
     <html lang="en" className="no-scrollbar">
-      <body className="no-scrollbar overflow-y-scroll overflow-x-hidden">
-        <Nav user={user}/>
+      <body className="no-scrollbar overflow-y-scroll overflow-x-hidden w-screen h-screen">
+        <NavServer/>
         {children}
         <Footer />
       </body>

@@ -1,44 +1,53 @@
 'use server'
 
-import { compare } from "@/lib/compare"
+import { compare } from "@/lib/bcrypt"
 import { redirect } from "next/navigation";
 import { hash } from "@/lib/hash"
-import { createUser } from "@/lib/users"
+import { createUser } from "@/lib/user"
+import { generateToken } from "@/lib/token";
+import { signupTests } from "~/tests/signup.test";
 
 export async function login(formData: FormData) {
-    const username = String(formData.get("user"));
-    const pass = String(formData.get("password"));
-
-    let check = false;
-    try {
-        check = await compare(username, pass)
-    } catch (error) {
-        console.log("Error: ", error);
+    const user = {
+        id: null,
+        username: String(formData.get("user")),
+        password: String(formData.get("password"))
     }
 
-    if(check !== true){
-        redirect("/auth/login")
-    }else{
+    try {
+        user.id = await compare(user.username, user.password)
+        console.log(user.id, " arrived safely")
+        const token = await generateToken(user.id, user.username)
+        console.log(token)
         redirect("/")
+    } catch (error) {
+        console.log("Error: ", error);
+        redirect("/auth/login")
     }
 }
 
-export async function signup(formData: FormData) {
-    const user = String(formData.get("username"))
-    const email = String(formData.get("email"))
-    const pass = String(formData.get("password"))
-    const conf = String(formData.get("confirm"))
+type FieldError = {
+    error?: string,
+    fields?: { 
+        username: string, 
+        email: string,
+    },
+}
 
-    if(pass !== conf){
-        redirect("/auth/signup")
+export async function signup(prev: FieldError, formData: FormData): Promise<FieldError | never> {
+    const user = {
+        username: String(formData.get("username")),
+        email: String(formData.get("email")),
+        password: String(formData.get("password")),
+        confirm: String(formData.get("confirm")),
+    };
+
+    const result = await signupTests(user)
+    if (result !== true){
+        return result as FieldError
     }
 
-    try {
-        const hashedPass = await hash(pass)
-        await createUser(user, email, hashedPass)
-    } catch (error) {
-        console.log("Error: ", error)
-    }
-
-    redirect("/auth/login")
+    const hashedPass = await hash(user.password);
+    await createUser(user.username, user.email, hashedPass);
+    redirect("/auth/login");
 }
