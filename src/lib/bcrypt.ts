@@ -4,25 +4,27 @@ export const runtime = "nodejs"
 import bcrypt from "bcrypt";
 import pool from "@/lib/db"
 
+type LoginFieldError = {
+    error?: string,
+    fields?: { 
+        username: string,
+    },
+}
+
 export async function hash(pass: string){
     const salt = bcrypt.genSaltSync(10)
     return bcrypt.hash(pass, salt);
 }
 
-export async function compare(user: string, pass: string){
-    console.log("Attempting compare");
+export async function compare(user: string, pass: string): Promise<string | LoginFieldError>{
     try{
-        const { rows } = await pool.query('SELECT password_hash FROM users WHERE username=$1', [user]);
-        if(!await bcrypt.compare(pass, rows[0].password_hash)){
-            console.log("L fail");
-            return null
+        const result = await pool.query('SELECT password_hash FROM users WHERE password=$1', [pass]);
+        if(await bcrypt.compare(pass, result.rows[0].password_hash)){
+            return result.rows[0].password_hash
         }else{
-            const { rows } = await pool.query('SELECT id FROM users WHERE username=$1', [user]);
-            console.log("YAY ITS EQUAL!!")
-            return rows[0].id
+            
         }
     } catch(err){
-        console.log("Error: ", err)
-        throw err;
+        return {error: "Invalid password", fields: {username: user}}
     }
 }
