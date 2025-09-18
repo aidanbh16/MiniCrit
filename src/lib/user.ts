@@ -6,7 +6,7 @@ export async function createUser(username: string, email: string, hash: string) 
   return check
 }
 
-export async function selectUser(id?: string | null){
+export async function selectUserByID(id?: string | null){
   if(!id) return null;
   try{
     const { rows } = await pool.query('SELECT username FROM users WHERE id = ($1)', [id])
