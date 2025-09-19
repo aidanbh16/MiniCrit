@@ -14,7 +14,7 @@ import ProfileIcon from "@/vectors/navIcons/user.svg"
 import AboutIcon from "@/vectors/navIcons/info.svg"
 import UpdatesIcon from "@/vectors/navIcons/refresh.svg"
 
-export default function Nav({user}: {user: string | null}) {
+export default function Nav({user}: {user: string | undefined}) {
   const [accountState, setAccountState] = useState(Boolean(user));
 
   let profile;

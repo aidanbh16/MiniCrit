@@ -24,11 +24,8 @@ export async function login(prev: LoginFieldError, formData: FormData): Promise<
             throw result as LoginFieldError
         }
         user.id = result
-
-        const token = await generateSession(user.id, user.username)
-
+        await generateSession(user.id, user.username)
     } catch (err: any) {
-        console.log("checkError2")
         return {error: err.error, username: err.username}
     }
     redirect("/")

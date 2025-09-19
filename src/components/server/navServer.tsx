@@ -4,9 +4,19 @@ export const runtime = 'nodejs'
 import 'server-only'
 import Nav from '@/components/layout/nav'
 import { selectUserByID } from '~/src/lib/user'
+import { cookies } from 'next/headers'
+import { decrypt } from '~/src/lib/session'
 
 export default async function NavServer() {
-    const id = ""
-    const user = await selectUserByID(id)
-    return <Nav user={user}/>
+    try{
+        const cookie = await cookies()
+        const value = await decrypt(cookie.get("session")?.value)
+        if(!value){
+            throw undefined
+        }
+        const user = await selectUserByID(String(value.id))
+        return <Nav user={user}/>
+    } catch {
+        return <Nav user={undefined}/>
+    }
 }
