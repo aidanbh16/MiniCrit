@@ -15,6 +15,13 @@ This project is currently a work in progress as of September 2025.
 * Tools: Git & GitHub
 
 ## Current Features
+- Sign-in Page
+  - Sign-in form
+    - Username input
+    - Password input
+  - Compares input to database
+  - Generates JWT token
+  - Redirects to Home Page
 - Sign-up Page
   - Sign-up form
     - Username input
@@ -45,13 +52,13 @@ This project is currently a work in progress as of September 2025.
     - [ ] Sort by
       - Sort by likes/dislikes
       - Sort by newest
-- [ ] Sign-in Page
-  - [ ] Sign-in form
+- [x] Sign-in Page
+  - [x] Sign-in form
     - Username input
     - Password input
-  - [ ] Compares input to database
-  - [ ] Generates JWT token
-  - [ ] Redirects to Home Page
+  - [x] Compares input to database
+  - [x] Generates JWT token
+  - [x] Redirects to Home Page
 - [x] Sign-up Page
   - [x] Sign-up form
     - Username input
