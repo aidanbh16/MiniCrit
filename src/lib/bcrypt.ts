@@ -16,8 +16,8 @@ export async function hash(pass: string){
 
 export async function compare(user: string, pass: string): Promise<string | LoginFieldError>{
     try{
-        const result = await pool.query('SELECT password_hash FROM users WHERE username=$1', [user]);
-        if(await bcrypt.compare(pass, result.rows[0].password_hash)){
+        const result = await pool.query('SELECT pass FROM users WHERE username=$1', [user]);
+        if(await bcrypt.compare(pass, result.rows[0].pass)){
             const userID = await pool.query('SELECT id FROM users WHERE username=$1', [user]);
             return userID.rows[0].id
         }else{

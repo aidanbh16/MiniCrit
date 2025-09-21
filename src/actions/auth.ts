@@ -17,7 +17,7 @@ export async function login(prev: LoginFieldError, formData: FormData): Promise<
         username: String(formData.get("user")),
         password: String(formData.get("password"))
     }
-
+    
     try {
         const result = await compare(user.username, user.password)
         if(typeof result !== "string"){

@@ -1,9 +1,10 @@
 import "server-only"
 import pool from "@/lib/db"
-import { JWTPayload } from "jose";
+
+
 
 export async function createUser(username: string, email: string, hash: string) {
-  const check = await pool.query('INSERT INTO users (username, email, password_hash) VALUES ($1,$2,$3) RETURNING id', [username, email, hash]);
+  const check = await pool.query('INSERT INTO users (username, email, pass) VALUES ($1,$2,$3) RETURNING id', [username, email, hash]);
   return check
 }
 
@@ -14,4 +15,18 @@ export async function selectUserByID(id?: string){
   } catch (err){
     return undefined;
   }
+}
+
+export async function selectUserByUser(user?: string): Promise<string | undefined>{
+  try{
+    const { rows } = await pool.query('SELECT username FROM users WHERE username = ($1)', [user])
+    return rows[0].username
+  }catch{
+    return undefined
+  }
+}
+
+export async function selectProfileByUser(user?: string){
+  const { rows } = await pool.query('SELECT username, pfp_key, bio FROM users WHERE username = ($1)', [user])
+  return rows
 }

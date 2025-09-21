@@ -14,7 +14,7 @@ export async function generateSession(userID: string, user?: String){
     const expires = new Date(Date.now() + 60 * 60 * 1000)
     const session = await encrypt({ id: userID, expiration: expires})
     const cookie = await cookies();
-    cookie.set("session", session, {
+    return cookie.set("session", session, {
         httpOnly: true,
         secure: true,
         expires: expires,
