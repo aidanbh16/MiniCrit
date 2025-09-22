@@ -23,14 +23,14 @@ const passLowerRegex = /[a-z]/
 const passSpecialRegex = /^[A-Za-z0-9!#@$%&*?]+$/
 
 export async function signupTests(user: User): Promise<boolean | SignupFieldError>{
-    const userResult = await pool.query('SELECT username FROM users WHERE username=$1 ', [user.username])
+    const userResult = await pool.query('SELECT username FROM users WHERE username = ($1) ', [user.username])
     const userCheck = userResult.rows.length > 0 ? userResult.rows[0].username : undefined
     console.log(userCheck)
     if(userCheck === user.username){
         return {error: "Username taken", fields: {username: user.username, email: user.email}}
     }
 
-    const emailResult = await pool.query('SELECT email FROM users WHERE email=$1 ', [user.email])
+    const emailResult = await pool.query('SELECT email FROM users WHERE email = ($1) ', [user.email])
     const emailCheck = emailResult.rows.length > 0 ? emailResult.rows[0].email : undefined
     console.log(emailCheck)
     if(emailCheck === user.email){

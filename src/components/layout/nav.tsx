@@ -30,7 +30,7 @@ export default function Nav({user}: {user: string | undefined}) {
   const userLink = `/profile/${user}`
 
   return (
-    <div className="flex justify-center items-center w-full h-1/8 bg-[rgba(234,235,237,1)] absolute">
+    <div className="flex justify-center items-center w-full h-1/8 max-h-25 bg-[rgba(234,235,237,1)] absolute">
       <header className="flex items-center h-12.5 w-2/3 min-w-200 fixed rounded-2xl shadow-lg bg-white">
         <div className="w-1/3 h-full flex justify-center">
           <div className="h-25 flex items-center bg-neutral-800">

@@ -3,7 +3,7 @@
 import { hash, compare } from "@/lib/bcrypt"
 import { redirect } from "next/navigation";
 import { createUser } from "@/lib/user"
-import { generateSession } from "~/src/lib/session";
+import { generateSession, deleteSession } from "~/src/lib/session";
 import { signupTests } from "~/tests/signup.test";
 
 type LoginFieldError = {
@@ -17,14 +17,15 @@ export async function login(prev: LoginFieldError, formData: FormData): Promise<
         username: String(formData.get("user")),
         password: String(formData.get("password"))
     }
-    
+
     try {
         const result = await compare(user.username, user.password)
         if(typeof result !== "string"){
             throw result as LoginFieldError
         }
         user.id = result
-        await generateSession(user.id, user.username)
+        await generateSession(user.id)
+        console.log("generated")
     } catch (err: any) {
         return {error: err.error, username: err.username}
     }
@@ -55,4 +56,9 @@ export async function signup(prev: SignupFieldError, formData: FormData): Promis
     const hashedPass = await hash(user.password);
     await createUser(user.username, user.email, hashedPass);
     redirect("/auth/login");
+}
+
+export async function signout(){
+    await deleteSession()
+    redirect("/")
 }

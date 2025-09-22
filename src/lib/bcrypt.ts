@@ -1,5 +1,4 @@
 import "server-only"
-export const runtime = "nodejs"
 
 import bcrypt from "bcrypt";
 import pool from "@/lib/db"
@@ -16,9 +15,10 @@ export async function hash(pass: string){
 
 export async function compare(user: string, pass: string): Promise<string | LoginFieldError>{
     try{
-        const result = await pool.query('SELECT pass FROM users WHERE username=$1', [user]);
-        if(await bcrypt.compare(pass, result.rows[0].pass)){
-            const userID = await pool.query('SELECT id FROM users WHERE username=$1', [user]);
+        const result = await pool.query('SELECT pass_hash FROM users WHERE username = ($1)', [user]);
+        const compare = await bcrypt.compare(pass, result.rows[0].pass_hash)
+        if(compare){
+            const userID = await pool.query('SELECT id FROM users WHERE username = ($1)', [user]);
             return userID.rows[0].id
         }else{
             throw {error: "Invalid password", username: user} as LoginFieldError
