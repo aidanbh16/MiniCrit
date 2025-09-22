@@ -57,8 +57,3 @@ export async function signup(prev: SignupFieldError, formData: FormData): Promis
     await createUser(user.username, user.email, hashedPass);
     redirect("/auth/login");
 }
-
-export async function signout(){
-    await deleteSession()
-    redirect("/")
-}
