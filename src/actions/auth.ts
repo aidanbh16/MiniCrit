@@ -3,7 +3,7 @@
 import { hash, compare } from "@/lib/bcrypt"
 import { redirect } from "next/navigation";
 import { createUser } from "@/lib/user"
-import { generateSession, deleteSession } from "~/src/lib/session";
+import { generateSession, deleteSession } from "@/lib/session";
 import { signupTests } from "~/tests/signup.test";
 
 type LoginFieldError = {

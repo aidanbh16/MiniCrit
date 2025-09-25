@@ -14,9 +14,10 @@ import ProfileIcon from "@/vectors/navIcons/user.svg"
 import AboutIcon from "@/vectors/navIcons/info.svg"
 import UpdatesIcon from "@/vectors/navIcons/refresh.svg"
 
+
 export default function Nav({user}: {user: string | undefined}) {
   const [accountState, setAccountState] = useState(Boolean(user));
-
+  
   let profile;
 
   if (user){
@@ -28,10 +29,9 @@ export default function Nav({user}: {user: string | undefined}) {
   }
 
   const userLink = `/profile/${user}`
-
   return (
     <div className="flex justify-center items-center w-full h-1/8 max-h-25 bg-[rgba(234,235,237,1)] absolute">
-      <header className="flex items-center h-12.5 w-2/3 min-w-200 fixed rounded-2xl shadow-lg bg-white">
+      <header className="flex items-center h-12.5 w-2/3 min-w-250 fixed rounded-2xl shadow-lg bg-white">
         <div className="w-1/3 h-full flex justify-center">
           <div className="h-25 flex items-center bg-neutral-800">
             <Link href="/"><Image src="/logo/logo2.png" alt="Logo" height={15} width={200} /></Link>

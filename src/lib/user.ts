@@ -26,6 +26,11 @@ export async function selectUserByUser(user?: string): Promise<string | undefine
   }
 }
 
+export async function selectProfileByID(id?: string){
+  const { rows } = await pool.query('SELECT username, pfp_key, bio FROM users WHERE id = ($1)', [id])
+  return rows
+}
+
 export async function selectProfileByUser(user?: string){
   const { rows } = await pool.query('SELECT username, pfp_key, bio FROM users WHERE username = ($1)', [user])
   return rows
