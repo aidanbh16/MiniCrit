@@ -3,7 +3,7 @@ import 'server-only'
 import { JWTPayload, SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
-const key = new TextEncoder().encode(process.env.ACCESS_KEY)
+const key = new TextEncoder().encode(process.env.SESSION_ACCESS_KEY)
 
 type SessionPayload = {
     id: string,

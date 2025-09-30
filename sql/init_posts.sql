@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS posts (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  username VARCHAR(32) NOT NULL,
+  userID TEXT NOT NULL,
   title_text TEXT NOT NULL,
   post_text TEXT NOT NULL,
   media_key TEXT,

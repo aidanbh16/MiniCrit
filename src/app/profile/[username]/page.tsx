@@ -24,7 +24,7 @@ export default async function Profile({params}: {params: Promise<{ username: str
             <div className="h-full w-full flex items-center justify-center">
               <div className="h-full w-full flex items-center justify-center">
                 <div className="h-70 bg-white rounded-full border-3 border-white overflow-hidden bg-blue">
-                  <Image src="/profile/placeholder.png" alt="profile" width={100} height={100} className="w-full h-full flex justify-center items-center"/>
+                  <Image src="/profile/placeholder.png" alt="profile" width={180} height={180} className="w-full h-full flex justify-center items-center"/>
                 </div>
               </div>
             </div>

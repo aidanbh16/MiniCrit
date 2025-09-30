@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { createUser } from "@/lib/user"
 import { generateSession, deleteSession } from "@/lib/session";
 import { signupTests } from "~/tests/signup.test";
+import { S3Client, CreateBucketCommand } from "@aws-sdk/client-s3";
 
 type LoginFieldError = {
     error?: string,
@@ -13,8 +14,8 @@ type LoginFieldError = {
 
 export async function login(prev: LoginFieldError, formData: FormData): Promise<LoginFieldError | never> {
     const user = {
-        id: "null",
-        username: String(formData.get("user")),
+        id: "",
+        username: String(formData.get("user")).toLowerCase(),
         password: String(formData.get("password"))
     }
 
@@ -41,11 +42,15 @@ type SignupFieldError = {
 }
 
 export async function signup(prev: SignupFieldError, formData: FormData): Promise<SignupFieldError | never> {
+    const userUsername = String(formData.get("username")).toLowerCase()
+    const userEmail = String(formData.get("email")).toLowerCase()
+    const userPassword = String(formData.get("password"))
+    const userConfirm = String(formData.get("confirm"))
     const user = {
-        username: String(formData.get("username")),
-        email: String(formData.get("email")),
-        password: String(formData.get("password")),
-        confirm: String(formData.get("confirm")),
+        username: userUsername,
+        email: userEmail,
+        password: userPassword,
+        confirm: userConfirm,
     };
 
     const result = await signupTests(user)
@@ -54,7 +59,7 @@ export async function signup(prev: SignupFieldError, formData: FormData): Promis
     }
 
     const hashedPass = await hash(user.password);
-    await createUser(user.username, user.email, hashedPass);
+    await createUser(userUsername, userEmail, hashedPass)
     redirect("/auth/login");
 }
 
