@@ -40,7 +40,7 @@ export async function authPost(prev: PostFieldError, formData: FormData): Promis
         }
 
         // Upload file to S3
-        if(post.file != null){
+        if(post.file.name !== "undefined"){
             try{
                 post.media_key = await uploadS3(post)
             }catch{

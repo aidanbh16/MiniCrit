@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { createUser } from "@/lib/user"
 import { generateSession, deleteSession } from "@/lib/session";
 import { signupTests } from "~/tests/signup.test";
-import { S3Client, CreateBucketCommand } from "@aws-sdk/client-s3";
 
 type LoginFieldError = {
     error?: string,

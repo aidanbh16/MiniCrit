@@ -3,7 +3,6 @@
 //Next components
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 
 //UI Components
 import DarkModeToggle from "../ui/darkmode";
@@ -16,9 +15,8 @@ import UpdatesIcon from "@/vectors/navIcons/refresh.svg"
 
 
 export default function Nav({user}: {user: string | undefined}) {
-  const [accountState, setAccountState] = useState(Boolean(user));
-  
   let profile;
+  let link;
 
   if (user){
     if (user.length > 12){ 
@@ -26,9 +24,12 @@ export default function Nav({user}: {user: string | undefined}) {
     }else{
       profile = user
     }
+    link = `/profile/${user}`
+  }else{
+    profile = "Login"
+    link = "/auth/login"
   }
 
-  const userLink = `/profile/${user}`
   return (
     <div className="flex justify-center items-center w-full h-1/8 max-h-25 bg-[rgba(234,235,237,1)] absolute">
       <header className="flex items-center h-12.5 w-2/3 min-w-250 fixed rounded-2xl shadow-lg bg-white">
@@ -60,21 +61,12 @@ export default function Nav({user}: {user: string | undefined}) {
                 <div className="w-full h-1/2 text-black flex flex-col justify-center items-center text-sm">Updates</div>
               </div>
             </Link>
-            {accountState ? 
-              <Link href={userLink} className="hover:bg-neutral-200 flex justify-center items-center w-full h-full overflow-x-hidden rounded-r-2xl">
+            <Link href={link} className="hover:bg-neutral-200 flex justify-center items-center w-full h-full overflow-x-hidden rounded-r-2xl">
                 <div className="w-full h-2/3 flex flex-col justify-center items-center">
                   <ProfileIcon  className="w-full h-1/2"/>
                   <div className="w-full h-1/2 text-black flex flex-col justify-center items-center text-sm">{profile}</div>
                 </div>
-              </Link>
-              :
-              <Link href="/auth/login" className="hover:bg-neutral-200 flex justify-center items-center w-full h-full rounded-r-2xl">
-                <div className="w-full h-2/3 flex flex-col justify-center items-center">
-                  <ProfileIcon  className="w-full h-1/2"/>
-                  <div className="w-full h-1/2 text-black flex flex-col justify-center items-center text-sm">Login</div>
-                </div>
-              </Link>
-            }
+            </Link>
           </div>
         </nav>
       </header>

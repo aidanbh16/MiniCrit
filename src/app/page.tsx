@@ -1,6 +1,8 @@
 export const runtime = 'nodejs'
 
 import HomeServer from "~/src/components/server/homeServer";
+import PostServer from "../components/server/postServer";
+
 
 export default function Home() {
   return (
@@ -9,7 +11,10 @@ export default function Home() {
           <div className="w-1/4 min-w-1/4 h-9/10 flex flex-col items-center gap-y-4">
             <HomeServer />
           </div>
-          <div className="w-3/4 min-w-3/4 h-full bg-blue-100">
+          <div className="w-2/4 min-w-2/4 h-9/10 flex flex-col items-center gap-y-4">
+            <PostServer />
+          </div>
+          <div className="w-1/4 min-w-1/4 h-full">
 
           </div>
         </div>
